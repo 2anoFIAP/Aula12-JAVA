@@ -1,5 +1,7 @@
 package br.com.fiap.bean;
 
+import java.time.LocalDate;
+
 public class Pessoa {
     // atributos
     private String nome;
@@ -10,7 +12,7 @@ public class Pessoa {
     } // construtor vazio
     public Pessoa(String nome, int anoNascimento) {
         this.nome = nome;
-        this.anoNascimento = anoNascimento;
+        setAnoNascimento(anoNascimento);
     } // construtor com passagem de parametro
 
     // métodos getters e setters (Alt+Insert)
@@ -27,7 +29,16 @@ public class Pessoa {
     }
 
     public void setAnoNascimento(int anoNascimento) {
-        this.anoNascimento = anoNascimento;
+        try {
+            LocalDate dataAtual = LocalDate.now();
+            if (anoNascimento >= 950 && anoNascimento <= dataAtual.getYear()) {
+                this.anoNascimento = anoNascimento;
+            } else {
+                throw new Exception("Valor Invalido! (min=950 ate max=AnoAtual)");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     // metodos particular da classe
