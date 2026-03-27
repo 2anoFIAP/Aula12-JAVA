@@ -10,7 +10,7 @@ public class Funcionario {
     }
     public Funcionario(String nome, float valorHoraTrabalho) {
         this.nome = nome;
-        this.valorHoraTrabalho = valorHoraTrabalho;
+        setValorHoraTrabalho(valorHoraTrabalho);
     }
 
     //getters e setters
